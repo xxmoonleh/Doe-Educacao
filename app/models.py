@@ -19,6 +19,7 @@ class Doacao(models.Model):
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     forma_pagamento = models.CharField(max_length=255)
+    confirmacao = models.BooleanField("Pagamento confirmado? ", default=False)
 
     def __str__(self):
         return f"Doação de {self.valor} para {self.usuario.nome}"
