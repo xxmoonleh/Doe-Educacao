@@ -1,6 +1,5 @@
 import datetime
 from django.db import models
-from django.utils import timezone
 
 class Usuario(models.Model):
     id = models.AutoField(primary_key=True)
@@ -11,12 +10,6 @@ class Usuario(models.Model):
     nascimento = models.DateField()
     cep = models.CharField(max_length=9)
     senha = models.CharField(max_length=255)
-    cidade = models.CharField(max_length=255)
-    estado = models.CharField(max_length=2)
-    bairro = models.CharField(max_length=255)
-    rua = models.CharField(max_length=255)
-    numero = models.CharField(max_length=10)
-    complemento = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.nome

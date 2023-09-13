@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Usuario, Doacao
 
 def index(request):
@@ -14,10 +14,8 @@ def doacao(request):
 def contatos(request):
     return render(request, "app/contatos.html")
 
-from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Usuario, Doacao
 
 # View de listagem de usuários
 class UsuarioListView(ListView):
@@ -28,14 +26,12 @@ class UsuarioListView(ListView):
 # View de criação de usuário
 class UsuarioCreateView(CreateView):
     model = Usuario
-    form_class = UsuarioForm  # Você precisa criar este formulário
     template_name = 'usuario_form.html'
     success_url = '/usuarios/'  # URL para redirecionar após a criação de um usuário
 
 # View de atualização de usuário
 class UsuarioUpdateView(UpdateView):
     model = Usuario
-    form_class = UsuarioForm  # Você precisa criar este formulário
     template_name = 'usuario_form.html'
     success_url = '/usuarios/'  # URL para redirecionar após a atualização de um usuário
 
@@ -54,6 +50,5 @@ class DoacaoListView(ListView):
 # View de criação de doação
 class DoacaoCreateView(CreateView):
     model = Doacao
-    form_class = DoacaoForm  # Você precisa criar este formulário
     template_name = 'doacao_form.html'
     success_url = '/doacoes/'  # URL para redirecionar após a criação de uma doação
